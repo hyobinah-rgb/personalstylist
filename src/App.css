@@ -1,42 +1,591 @@
-#root {
-  max-width: 1280px;
+/* ===========================
+   RESET & BASE
+   =========================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===========================
+   APP SHELL
+   =========================== */
+.app {
+  min-height: 100vh;
+  background: #F7F4F0;
+  color: #1A1A1A;
+  font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+}
+
+/* ===========================
+   HERO
+   =========================== */
+.hero {
+  background: linear-gradient(135deg, #1A1A1A 0%, #2D2D2D 60%, #3D3530 100%);
+  padding: 80px 24px 72px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(200, 168, 130, 0.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  max-width: 600px;
   margin: 0 auto;
-  padding: 2rem;
+}
+
+.hero-eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #C8A882;
+  margin-bottom: 20px;
+}
+
+.hero-title {
+  font-size: clamp(36px, 6vw, 56px);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #FFFFFF;
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+}
+
+.hero-subtitle {
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ===========================
+   MAIN LAYOUT
+   =========================== */
+.main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 56px 24px 80px;
+}
+
+/* ===========================
+   SECTIONS
+   =========================== */
+.section {
+  margin-bottom: 56px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1A1A1A;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.step-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: #1A1A1A;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 50%;
+  letter-spacing: 0;
+  flex-shrink: 0;
+}
+
+.section-hint {
+  font-size: 12px;
+  font-weight: 400;
+  color: #999;
+  margin-left: auto;
+}
+
+/* ===========================
+   BODY INPUTS
+   =========================== */
+.body-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-field {
+  width: 100%;
+  padding: 14px 48px 14px 18px;
+  border: 1.5px solid #E0DAD4;
+  border-radius: 12px;
+  background: #FFFFFF;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1A1A1A;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  -moz-appearance: textfield;
+}
+
+.input-field::-webkit-outer-spin-button,
+.input-field::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.input-field::placeholder {
+  color: #CCC;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.input-field:focus {
+  border-color: #1A1A1A;
+  box-shadow: 0 0 0 3px rgba(26, 26, 26, 0.08);
+}
+
+.input-unit {
+  position: absolute;
+  right: 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #AAA;
+  pointer-events: none;
+}
+
+/* ===========================
+   BMI CARD
+   =========================== */
+.bmi-card {
+  margin-top: 16px;
+  background: #FFFFFF;
+  border: 1.5px solid #E8E2DC;
+  border-radius: 14px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  animation: fadeUp 0.3s ease;
+}
+
+.bmi-left {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.bmi-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #AAA;
+}
+
+.bmi-value {
+  font-size: 28px;
+  font-weight: 800;
+  color: #1A1A1A;
+}
+
+.bmi-category {
+  font-size: 13px;
+  font-weight: 600;
+  color: #C8A882;
+  background: rgba(200, 168, 130, 0.12);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.bmi-tip {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.6;
+  border-left: 2px solid #E8E2DC;
+  padding-left: 16px;
+}
+
+/* ===========================
+   STYLE CHIPS
+   =========================== */
+.style-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.style-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 18px 12px;
+  background: #FFFFFF;
+  border: 1.5px solid #E0DAD4;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.style-chip:hover {
+  border-color: #1A1A1A;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.style-chip.selected {
+  background: #1A1A1A;
+  border-color: #1A1A1A;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(26, 26, 26, 0.2);
+}
+
+.chip-icon {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.chip-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1A1A1A;
+  transition: color 0.2s;
+}
+
+.chip-eng {
+  font-size: 10px;
+  font-weight: 500;
+  color: #AAA;
+  letter-spacing: 0.5px;
+  transition: color 0.2s;
+}
+
+.style-chip.selected .chip-label {
+  color: #FFFFFF;
+}
+
+.style-chip.selected .chip-eng {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* ===========================
+   CTA BUTTON
+   =========================== */
+.cta-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 64px;
+}
+
+.cta-btn {
+  width: 100%;
+  max-width: 400px;
+  padding: 18px 32px;
+  background: #1A1A1A;
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(200, 168, 130, 0.2), transparent);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.cta-btn:hover:not(:disabled)::after {
+  opacity: 1;
+}
+
+.cta-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(26, 26, 26, 0.3);
+}
+
+.cta-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.cta-btn.loading {
+  background: #444;
+  cursor: not-allowed;
+}
+
+.btn-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+.cta-hint {
+  font-size: 13px;
+  color: #999;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* ===========================
+   RESULTS
+   =========================== */
+.results-section {
+  animation: fadeUp 0.5s ease;
 }
 
-@keyframes logo-spin {
+.results-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.results-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #1A1A1A;
+  margin-bottom: 10px;
+}
+
+.results-subtitle {
+  font-size: 14px;
+  color: #888;
+  line-height: 1.6;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.photo-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: fadeUp 0.5s ease both;
+}
+
+.photo-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+.photo-img-wrapper {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: #EEE;
+}
+
+.photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.photo-card:hover .photo-img {
+  transform: scale(1.04);
+}
+
+.photo-style-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(26, 26, 26, 0.75);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+}
+
+.photo-info {
+  padding: 16px;
+}
+
+.photo-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1A1A1A;
+  margin-bottom: 10px;
+}
+
+.photo-items {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.photo-item {
+  font-size: 12px;
+  color: #777;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #C8A882;
+  flex-shrink: 0;
+}
+
+/* ===========================
+   FOOTER
+   =========================== */
+.footer {
+  text-align: center;
+  padding: 32px 24px;
+  border-top: 1px solid #E8E2DC;
+  background: #FFFFFF;
+}
+
+.footer p {
+  font-size: 12px;
+  color: #BBB;
+  letter-spacing: 0.5px;
+}
+
+/* ===========================
+   ANIMATIONS
+   =========================== */
+@keyframes fadeUp {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(16px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+@media (max-width: 640px) {
+  .hero {
+    padding: 56px 20px 52px;
+  }
+
+  .main {
+    padding: 40px 16px 60px;
+  }
+
+  .body-inputs {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .style-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  .style-chip {
+    padding: 14px 8px;
+  }
+
+  .chip-icon {
+    font-size: 20px;
+  }
+
+  .chip-label {
+    font-size: 12px;
+  }
+
+  .chip-eng {
+    display: none;
+  }
+
+  .photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .bmi-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .bmi-tip {
+    border-left: none;
+    border-top: 2px solid #E8E2DC;
+    padding-left: 0;
+    padding-top: 12px;
   }
 }
 
-.card {
-  padding: 2em;
-}
+@media (max-width: 400px) {
+  .style-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-.read-the-docs {
-  color: #888;
+  .photo-grid {
+    grid-template-columns: 1fr;
+  }
 }
